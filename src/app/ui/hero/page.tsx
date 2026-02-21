@@ -10,6 +10,7 @@ const page = (props: Props) => {
     <div>
       <Link href="/ui/hero/hero1"><button>Hero 1</button></Link>
       <Link href="/ui/hero/hero2"><button>Hero 2</button></Link>
+      <Link href="/ui/hero/hero3"><button>Hero 3</button></Link>
     </div>
   )
 }
