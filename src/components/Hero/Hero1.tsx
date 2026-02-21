@@ -14,45 +14,43 @@ const Hero1 = (props: Props) => {
     const imagesRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        // Text animation
-        if (textRef.current) {
-            const elements = textRef.current.children
-            gsap.fromTo(elements,
-                { y: 50, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    stagger: 0.2,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: textRef.current,
-                        start: "top 80%",
+        const ctx = gsap.context(() => {
+            if (textRef.current) {
+                gsap.fromTo(textRef.current.children,
+                    { y: 50, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 1,
+                        stagger: 0.2,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: textRef.current,
+                            start: "top 80%",
+                        }
                     }
-                }
-            )
-        }
+                )
+            }
 
-        // Images animation
-        if (imagesRef.current) {
-            const images = imagesRef.current.children
-            gsap.fromTo(images,
-                { y: 150, opacity: 0 },
-                {
-                    y: (index, target) => {
-                        return 0
-                    },
-                    opacity: 1,
-                    duration: 1.2,
-                    stagger: 0.15,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: imagesRef.current,
-                        start: "top 75%",
+            if (imagesRef.current) {
+                gsap.fromTo(imagesRef.current.children,
+                    { y: 150, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 1.2,
+                        stagger: 0.15,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: imagesRef.current,
+                            start: "top 75%",
+                        }
                     }
-                }
-            )
-        }
+                )
+            }
+        })
+
+        return () => ctx.revert()
     }, [])
 
     return (
@@ -71,10 +69,10 @@ const Hero1 = (props: Props) => {
                     />
                 </div>
 
-                <div ref={textRef} className='z-10 relative flex flex-col items-center gap-8 pointer-events-none'>
-                    <h1 className='text-white font-semibold text-6xl text-center pointer-events-auto leading-tight'>Build Better Products With <br /> Powerful Analytics</h1>
-                    <p className='text-white/80 text-2xl  text-center pointer-events-auto'>Get deep insights into user behavior and make data-driven <br></br>decisions that accelerate your product growth</p>
-                    <div className='flex gap-6 pointer-events-auto mt-4'>
+                <div ref={textRef} className='z-10 relative flex flex-col items-center gap-8 '>
+                    <h1 className='text-white font-semibold text-6xl text-center  leading-tight'>Build Better Products With <br /> Powerful Analytics</h1>
+                    <p className='text-white/80 text-2xl  text-center '>Get deep insights into user behavior and make data-driven <br></br>decisions that accelerate your product growth</p>
+                    <div className='flex gap-6  mt-4'>
                         <button className='bg-white px-8 py-4 text-black font-medium rounded-full hover:bg-gray-200 transition-colors'>Start free trial</button>
                         <button className='px-8 py-4 bg-white/10 text-white font-medium rounded-full hover:bg-white/20 transition-colors'>See how it works</button>
                     </div>

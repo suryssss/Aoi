@@ -1,5 +1,6 @@
 'use client'
 import Hero1 from "@/components/Hero/Hero1"
+import Link from "next/link"
 
 
 type Props = {}
@@ -7,7 +8,8 @@ type Props = {}
 const page = (props: Props) => {
   return (
     <div>
-      <Hero1 />
+      <Link href="/ui/hero/hero1"><button>Hero 1</button></Link>
+      <Link href="/ui/hero/hero2"><button>Hero 2</button></Link>
     </div>
   )
 }
