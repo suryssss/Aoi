@@ -55,7 +55,7 @@ const Hero7 = (props: Props) => {
                     stagger: 0.1,
                     ease: "hop",
                 }, "-=0.2")
-                .to(".hero-img", { scale: 2.2, duration: 1.2, ease: "hop", force3D: true }, "<")
+                .to(".hero-img", { scale: 1.8, duration: 1.2, ease: "hop", force3D: true }, "<")
                 .to(".hero-overlay", {
                     clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
                     duration: 1.2,
