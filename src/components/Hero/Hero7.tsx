@@ -17,14 +17,14 @@ const Hero7 = (props: Props) => {
             CustomEase.create("hop", "0.85,0,0.15,1");
 
             const counter = { value: 0 };
-            const counterTl = gsap.timeline({ delay: 0.5 });
-            const overlayTextTl = gsap.timeline({ delay: 0.75 });
-            const revealTl = gsap.timeline({ delay: 0.5 });
+            const counterTl = gsap.timeline();
+            const overlayTextTl = gsap.timeline();
+            const revealTl = gsap.timeline();
 
             counterTl.to(counter, {
                 value: 100,
-                duration: 5,
-                ease: "power2.out",
+                duration: 3,
+                ease: "power2.inOut",
                 onUpdate: () => {
                     if (counterRef.current) {
                         counterRef.current.textContent = Math.floor(counter.value).toString();
@@ -33,10 +33,10 @@ const Hero7 = (props: Props) => {
             });
 
             overlayTextTl
-                .to(".overlay-text", { y: "0", duration: 0.75, ease: "hop" })
-                .to(".overlay-text", { y: "-2rem", duration: 0.75, ease: "hop", delay: 0.75 })
-                .to(".overlay-text", { y: "-4rem", duration: 0.75, ease: "hop", delay: 0.75 })
-                .to(".overlay-text", { y: "-6rem", duration: 0.75, ease: "hop", delay: 1 });
+                .to(".overlay-text", { y: "0", duration: 0.5, ease: "hop" })
+                .to(".overlay-text", { y: "-2rem", duration: 0.5, ease: "hop", delay: 0.3 })
+                .to(".overlay-text", { y: "-4rem", duration: 0.5, ease: "hop", delay: 0.3 })
+                .to(".overlay-text", { y: "-6rem", duration: 0.5, ease: "hop", delay: 0.4 });
 
             revealTl
                 .to(".img", {
@@ -45,16 +45,17 @@ const Hero7 = (props: Props) => {
                     stagger: 0.05,
                     duration: 1,
                     ease: "hop",
+                    force3D: true,
                 })
-                .to(".hero-images", { gap: "0.75rem", delay: 0.5, ease: "hop" })
-                .to(".img", { scale: 1, duration: 1, ease: "hop" }, "<")
+                .to(".hero-images", { gap: "0.75rem", duration: 1.2, ease: "hop" }, "-=0.4")
+                .to(".img", { scale: 1, duration: 1.2, ease: "hop", force3D: true }, "<")
                 .to(".img:not(.hero-img)", {
                     clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-                    duration: 1,
+                    duration: 1.2,
                     stagger: 0.1,
                     ease: "hop",
-                }, "-=0.4")
-                .to(".hero-img", { scale: 2.2, duration: 1.2, ease: "hop" }, "<")
+                }, "-=0.2")
+                .to(".hero-img", { scale: 2.2, duration: 1.2, ease: "hop", force3D: true }, "<")
                 .to(".hero-overlay", {
                     clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
                     duration: 1.2,
@@ -67,6 +68,7 @@ const Hero7 = (props: Props) => {
                         duration: 1.2,
                         stagger: 0.05,
                         ease: "power3.out",
+                        force3D: true,
                     },
                     "-=0.8"
                 );
@@ -131,7 +133,7 @@ const Hero7 = (props: Props) => {
                         className="img w-[20vw] md:w-[10vw] aspect-[5/7] translate-y-[50%] scale-50 opacity-0 bg-[#333] will-change-[opacity,transform,clip-path]"
                         style={{ clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' }}
                     >
-                        <img src="/hero/hero7/img2.png" alt="" className="w-full h-full object-cover" />
+                        <img src="/hero/hero7/img2.jpg" alt="" className="w-full h-full object-cover" />
                     </div>
                     <div
                         className="img hero-img w-[20vw] md:w-[10vw] aspect-[5/7] translate-y-[50%] scale-50 opacity-0 bg-[#333] will-change-[opacity,transform,clip-path]"
