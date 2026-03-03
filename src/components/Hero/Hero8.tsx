@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react"
 import { PROJECTS } from "@/data/projects"
 import { gsap } from "gsap"
+import Image from "next/image"
 
 type Props = {}
 
@@ -108,19 +109,19 @@ const Hero8 = (props: Props) => {
     }
 
     return (
-        <section ref={sectionRef} className='relative w-full py-2 flex flex-col items-center gap-2 overflow-hidden'>
+        <section ref={sectionRef} className='relative w-full py-2 flex flex-col items-center gap-2 overflow-hidden' style={{ fontFamily: '"Poppins", sans-serif' }}>
             {rowsData.map((rowProjects, rowIndex) => (
                 <div
                     key={rowIndex}
-                    className="w-[125%] flex gap-4"
+                    className="w-[125%] flex gap-4 will-change-[width]"
                     ref={(el) => {
                         if (el) rowsRef.current[rowIndex] = el;
                     }}
                 >
                     {rowProjects.map((project: any, colIndex: number) => (
                         <div key={colIndex} className="flex-1 aspect-[7/5] flex flex-col overflow-hidden">
-                            <div className="flex-1 min-h-0 overflow-hidden">
-                                <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                            <div className="flex-1 min-h-0 overflow-hidden relative">
+                                <Image src={project.image} alt={project.title} fill className="object-cover" sizes="(max-width: 1000px) 50vw, 33vw" priority={rowIndex <= 1} />
                             </div>
                             <div className="flex justify-between py-1">
                                 <p className="text-xs uppercase font-medium tracking-[-0.02rem] leading-none">{project.title}</p>

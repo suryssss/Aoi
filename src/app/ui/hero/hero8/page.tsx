@@ -21,17 +21,22 @@ const page = (props: Props) => {
     }, [])
 
     return (
-        <>
+        <main style={{ fontFamily: '"Poppins", sans-serif' }}>
             <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
-            <section className='relative w-full h-screen flex justify-center items-center overflow-hidden'>
-                <p className="uppercase text-[0.9rem] font-medium tracking-[-0.02rem] leading-none">Intro Section</p>
+            <section className='relative w-full h-screen flex flex-col justify-center items-center overflow-hidden bg-zinc-50 text-zinc-900'>
+                <h1 className="uppercase text-5xl md:text-6xl font-medium tracking-tighter leading-none mb-6">Intro</h1>
+                <div className="flex flex-col items-center gap-3 mt-8 text-zinc-400">
+                    <p className="uppercase text-xs md:text-sm font-semibold tracking-[0.2em] leading-none">Scroll down to see the animation</p>
+                    <div className="animate-bounce text-xl mt-2">↓</div>
+                </div>
             </section>
             <Hero8 />
 
-            <section className='relative w-full h-screen flex justify-center items-center overflow-hidden'>
-                <p className="uppercase text-[0.9rem] font-medium tracking-[-0.02rem] leading-none">Outro Section</p>
+            <section className='relative w-full h-screen flex flex-col justify-center items-center overflow-hidden text-zinc-900'>
+                <h1 className="uppercase text-5xl md:text-6xl font-medium tracking-tighter leading-none">Outro</h1>
+                <p className="uppercase text-xs md:text-sm font-semibold tracking-[0.2em] leading-none mt-8 text-zinc-400">The End</p>
             </section>
-        </>
+        </main>
     )
 }
 
