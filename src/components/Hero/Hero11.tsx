@@ -1,10 +1,11 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
+import Image from 'next/image'
 
-const SLIDE_WIDTH = 200
-const SLIDE_HEIGHT = 275
-const SLIDE_GAP = 100
+const SLIDE_WIDTH = 320
+const SLIDE_HEIGHT = 440
+const SLIDE_GAP = 150
 const SLIDE_COUNT = 9
 const ARC_DEPTH = 200
 const CENTER_LIFT = 100
@@ -120,6 +121,7 @@ const Hero11 = () => {
         }
 
         const animate = () => {
+
             scrollCurrent += (scrollTarget - scrollCurrent) * SCROLL_LERP
             layoutSlides(scrollCurrent)
             syncActiveTitle(scrollCurrent)
@@ -128,6 +130,23 @@ const Hero11 = () => {
 
         layoutSlides(0)
         animate()
+        gsap.fromTo(
+            sliderContainer.querySelectorAll(".slide-inner"),
+            { y: 200, opacity: 0, rotation: 5 },
+            { y: 0, opacity: 1, rotation: 0, duration: 1.5, stagger: 0.05, ease: 'power4.out', delay: 0.1 }
+        )
+
+        gsap.fromTo(
+            sliderContainer.querySelectorAll(".nav-item, .bottom-utility"),
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 1, stagger: 0.1, ease: 'power3.out', delay: 0.8 }
+        )
+
+        gsap.fromTo(
+            sliderContainer.querySelector("#slide-title"),
+            { opacity: 0, scale: 0.9, y: 50 },
+            { opacity: 1, scale: 1, y: 0, duration: 1.2, ease: 'expo.out', delay: 0.5 }
+        )
 
         const handleWheel = (e: WheelEvent) => {
             e.preventDefault()
@@ -176,9 +195,9 @@ const Hero11 = () => {
                 className="absolute inset-0 z-0 opacity-30 pointer-events-none mix-blend-overlay"
                 style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}
             ></div>
-            <nav className="absolute top-0 left-0 w-full p-6 lg:p-10 flex justify-between items-center z-[1001] pointer-events-none">
+            <nav className="nav-item absolute top-0 left-0 w-full p-6 lg:p-10 flex justify-between items-center z-[1001] pointer-events-none">
                 <div className="font-bold text-xl tracking-tighter uppercase pointer-events-auto cursor-pointer" style={{ fontFamily: 'PP Neue Montreal, sans-serif' }}>
-                    AURA&copy;
+                    AURA
                 </div>
                 <div className="flex gap-6 text-xs lg:text-sm font-bold uppercase tracking-widest pointer-events-auto">
                     <span className="cursor-pointer hover:opacity-50 transition-opacity duration-300">Journal</span>
@@ -187,13 +206,13 @@ const Hero11 = () => {
                 </div>
             </nav>
 
-            <div className="absolute bottom-[10svh] lg:bottom-[15svh] left-1/2 -translate-x-1/2 flex flex-col items-center z-[1000] pointer-events-none w-full px-4">
+            <div className="nav-item absolute bottom-[10svh] lg:bottom-[15svh] left-1/2 -translate-x-1/2 flex flex-col items-center z-[1000] pointer-events-none w-full px-4">
                 <p className="text-xs lg:text-sm font-bold tracking-[0.3em] mb-4 uppercase opacity-50">
                     Curated Collection
                 </p>
                 <p
                     id="slide-title"
-                    className="font-medium text-4xl lg:text-6xl xl:text-7xl whitespace-nowrap uppercase tracking-widest mix-blend-difference text-black"
+                    className="font-medium text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap uppercase tracking-widest mix-blend-difference text-black"
                     style={{ fontFamily: 'PP Neue Montreal, sans-serif' }}
                 >
                     {activeTitle}
@@ -204,11 +223,11 @@ const Hero11 = () => {
                     <span className="w-4 text-left">{String(SLIDE_COUNT).padStart(2, '0')}</span>
                 </div>
             </div>
-            <div className="absolute bottom-6 left-6 lg:bottom-10 lg:left-10 z-[1001] text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase opacity-60 flex items-center gap-3">
+            <div className="bottom-utility absolute bottom-6 left-6 lg:bottom-10 lg:left-10 z-[1001] text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase opacity-60 flex items-center gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-black/80 animate-pulse"></div>
                 Scroll to see the Magic
             </div>
-            <div className="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 z-[1001] text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase opacity-60 flex gap-4 lg:gap-6 pointer-events-auto">
+            <div className="bottom-utility absolute bottom-6 right-6 lg:bottom-10 lg:right-10 z-[1001] text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase opacity-60 flex gap-4 lg:gap-6 pointer-events-auto">
                 <span className="cursor-pointer hover:opacity-100 transition-opacity">IG</span>
                 <span className="cursor-pointer hover:opacity-100 transition-opacity">X</span>
                 <span className="cursor-pointer hover:opacity-100 transition-opacity">YT</span>
@@ -220,13 +239,16 @@ const Hero11 = () => {
                     className="slide absolute will-change-transform top-0 left-0"
                     style={{ width: SLIDE_WIDTH, height: SLIDE_HEIGHT }}
                 >
-                    <div className="w-full h-full relative overflow-clip group cursor-pointer shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
-                        <img
+                    <div className="slide-inner w-full h-full relative overflow-clip group cursor-pointer shadow-[0_20px_50px_rgba(0,0,0,0.2)]">
+                        <Image
                             src={src}
                             alt={SlideTitles[i]}
-                            className="w-full h-full object-cover brightness-[0.85] contrast-125 saturate-110 group-hover:scale-110 group-hover:brightness-100 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
+                            fill
+                            sizes="(max-width: 768px) 100vw, 320px"
+                            priority={i < 5}
+                            className="object-cover brightness-[0.85] contrast-125 saturate-110 group-hover:scale-110 group-hover:brightness-100 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
                         />
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700 pointer-events-none"></div>
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700 pointer-events-none z-10"></div>
                     </div>
                 </div>
             ))}
