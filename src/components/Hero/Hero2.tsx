@@ -31,7 +31,7 @@ export default function Hero2() {
     return (
         <section
             ref={containerRef}
-            className="w-full h-full bg-[#0a0a0a] flex items-center justify-center px-6 md:px-12 lg:px-20 overflow-hidden font-sans"
+            className="w-full min-h-screen bg-[#0a0a0a] flex items-center justify-center px-6 md:px-12 lg:px-20 overflow-hidden font-sans"
         >
             <div className="max-w-[1400px] w-full grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-center">
 

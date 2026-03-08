@@ -10,12 +10,12 @@ const page = (props: Props) => {
   return (
     <div>
       <div style={{ position: 'absolute', zIndex: 1000, top: 0, padding: '10px' }}>
-        <Link href="/ui/hero/hero1"><button>Hero 1</button></Link>
-        <Link href="/ui/hero/hero2"><button>Hero 2</button></Link>
-        <Link href="/ui/hero/hero3"><button>Hero 3</button></Link>
-        <Link href="/ui/hero/hero13"><button>Hero 13</button></Link>
+        <Link href="/ui/hero/1"><button>Hero 1</button></Link>
+        <Link href="/ui/hero/2"><button>Hero 2</button></Link>
+        <Link href="/ui/hero/3"><button>Hero 3</button></Link>
+        <Link href="/ui/hero/13"><button>Hero 13</button></Link>
       </div>
-      <Hero13 />
+
     </div>
   )
 }
