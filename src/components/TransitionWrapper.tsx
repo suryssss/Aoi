@@ -3,7 +3,7 @@
 import { TransitionRouter } from 'next-transition-router'
 import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { DrawSVGPlugin } from 'gsap-trial/dist/DrawSVGPlugin'
+import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger)
