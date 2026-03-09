@@ -14,6 +14,7 @@ import Hero10 from '@/components/Hero/Hero10';
 import Hero11 from '@/components/Hero/Hero11';
 import Hero12 from '@/components/Hero/Hero12';
 import Hero13 from '@/components/Hero/Hero13';
+import Hero14 from '@/components/Hero/Hero14';
 
 const heroes: Record<string, React.FC> = {
     '1': Hero1,
@@ -29,6 +30,7 @@ const heroes: Record<string, React.FC> = {
     '11': Hero11,
     '12': Hero12,
     '13': Hero13,
+    '14': Hero14,
 };
 
 export default async function HeroDynamicPage({ params }: { params: Promise<{ id: string }> }) {
