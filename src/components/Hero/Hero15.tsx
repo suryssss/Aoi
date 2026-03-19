@@ -66,8 +66,6 @@ const Hero15 = () => {
             lenis.on("scroll", ScrollTrigger.update);
             gsap.ticker.add((time) => lenis.raf(time * 1000));
             gsap.ticker.lagSmoothing(0);
-
-            // --- Entrance animations ---
             const tl = gsap.timeline({ delay: 0.3 });
             if (heroImgRef.current) {
                 tl.fromTo(heroImgRef.current,
