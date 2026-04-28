@@ -7,3 +7,56 @@ p .line {
   transform: translateY(100%);
   will-change: transform;
 }
+
+/*  ASCII Gallery  */
+.ascii-img-wrapper {
+  transition: box-shadow 0.4s ease;
+}
+
+.ascii-img-wrapper:hover {
+  box-shadow: 0 0 0 1px rgba(78, 205, 196, 0.35),
+    0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.ascii-img-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, transparent 50%, rgba(0, 0, 0, 0.45));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 3;
+  border-radius: inherit;
+}
+
+.ascii-img-wrapper:hover::after {
+  opacity: 1;
+}
+
+.ascii-img-wrapper canvas {
+  animation: asciiFadeIn 0.5s ease 0.1s forwards;
+}
+
+@keyframes asciiFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.ascii-revealed img {
+  opacity: 1;
+}
+
+.ascii-revealed canvas {
+  opacity: 0 !important;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+  animation: none !important;
+}
+
+@media (max-width: 1000px) {
+  .ascii-img-wrapper {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+}
