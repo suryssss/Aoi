@@ -6,7 +6,6 @@ const FONT_SIZE = 11;
 const ASCII_COLUMNS = 26;
 const ASPECT_W = 4;
 const ASPECT_H = 5;
-
 const IMG_STAGGER_MS = 200;
 const CELL_APPEAR_MS = 1.2;
 const SCRAMBLE_TICKS = 14;
