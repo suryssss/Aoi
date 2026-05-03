@@ -135,7 +135,7 @@ const Navbar2: React.FC = () => {
   };
 
   return (
-    <div ref={containerRef} className="w-full h-screen font-['Courier_New',Courier,monospace] bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat overflow-hidden">
+    <div ref={containerRef} translate="no" className="notranslate w-full h-screen font-['Courier_New',Courier,monospace] bg-[url('/hero.jpg')] bg-cover bg-center bg-no-repeat overflow-hidden">
       <style>{`
         .header h1 span {
           position: relative;
@@ -173,7 +173,7 @@ const Navbar2: React.FC = () => {
         {/* Col 1 */}
         <div className="flex-1 relative h-full pt-[10em] px-[2em] pb-[2em] flex flex-col justify-between items-start max-[1000px]:h-auto max-[1000px]:pt-[8em] max-[1000px]:pb-[2em] max-[1000px]:px-[1.5em] max-[1000px]:flex-none">
           <div className="absolute top-8 left-8 max-[1000px]:top-6 max-[1000px]:left-6">
-            <a href="#" translate="no" className="no-underline uppercase font-[Impact,sans-serif] text-[60px] max-[1000px]:text-[32px] max-[1000px]:tracking-tight font-normal text-white">AOI</a>
+            <a href="#" translate="no" className="no-underline uppercase font-['Gill_Sans','Gill_Sans_MT',Calibri,'Trebuchet_MS',sans-serif] text-[60px] max-[1000px]:text-[32px] max-[1000px]:tracking-tight font-light text-white">AOI</a>
           </div>
 
           <div className="links max-[1000px]:w-full max-[1000px]:mt-8">
