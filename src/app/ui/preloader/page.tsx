@@ -1,8 +1,9 @@
-"use client";
-
-import PreloaderAnimation from "../../../components/Preloader/PreloaderAnimation";
+import Link from "next/link";
+import { ArrowRight, Loader2 } from "lucide-react";
 
 export default function PreloaderShowcase() {
+  const preloaders = [1];
+
   return (
     <div className="p-6 sm:p-10 max-w-5xl mx-auto w-full">
       <div className="animate-fade-in-up space-y-8">
@@ -13,12 +14,23 @@ export default function PreloaderShowcase() {
           </p>
         </div>
 
-        <div className="relative w-full h-[60vh] glass-panel rounded-2xl overflow-hidden border border-white/10 flex items-center justify-center bg-black">
-          {/* Render the preloader directly inside the showcase area for preview */}
-          <div className="absolute inset-0 w-full h-full scale-75 origin-center pointer-events-none">
-               <PreloaderAnimation />
-          </div>
-          <div className="absolute bottom-4 right-4 text-xs text-gray-500">Preview (Scaled 75%)</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {preloaders.map((id) => (
+            <Link
+              key={id}
+              href={`/ui/preloader/${id}`}
+              className="group glass-panel rounded-xl overflow-hidden hover:bg-white/5 transition-all block"
+            >
+              <div className="aspect-[16/9] bg-[#121212] border-b border-white/5 flex items-center justify-center relative overflow-hidden group-hover:border-blue-500/30 transition-colors">
+                <Loader2 className="w-10 h-10 text-gray-700 group-hover:text-blue-500/50 transition-colors animate-spin-slow" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <div className="p-5 flex items-center justify-between">
+                <span className="font-medium">Preloader Variation {id}</span>
+                <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-blue-400 group-hover:translate-x-1 transition-all" />
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </div>
