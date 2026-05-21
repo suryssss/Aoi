@@ -1,5 +1,41 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: #0a0a0a;
+  --color-foreground: #ededed;
+  
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-geist-sans), sans-serif;
+  }
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .glass-panel {
+    background: var(--color-glass-bg);
+    border: 1px solid var(--color-glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to right, #60a5fa, #a78bfa);
+  }
+}
+
 /* GSAP SplitText animation helpers */
 h1 .word,
 p .line {
@@ -8,7 +44,7 @@ p .line {
   will-change: transform;
 }
 
-/*  ASCII Gallery  */
+/* ASCII Gallery */
 .ascii-img-wrapper {
   transition: box-shadow 0.4s ease;
 }

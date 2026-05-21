@@ -17,8 +17,6 @@ export const metadata: Metadata = {
   description: "Personal Library for UI/UX",
 };
 
-import TransitionWrapper from "@/components/TransitionWrapper";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,9 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <TransitionWrapper>
-          {children}
-        </TransitionWrapper>
+        {children}
       </body>
     </html>
   );

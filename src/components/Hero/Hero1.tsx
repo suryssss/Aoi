@@ -54,7 +54,7 @@ const Hero1 = (props: Props) => {
     }, [])
 
     return (
-        <div className='bg-[#000000] w-full'>
+        <div className='bg-black w-full min-h-screen overflow-hidden'>
             <div className='relative overflow-hidden flex flex-col items-center justify-center min-h-screen gap-8 pb-20'>
                 <div className='absolute inset-0 z-0 pointer-events-auto'>
                     <RippleGrid
