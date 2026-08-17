@@ -429,191 +429,81 @@ const Footer1: React.FC = () => {
   }, [setPointerTarget, parallaxScale]);
 
   return (
-    <div style={{ background: '#1a1a1a', width: '100%' }}>
-      <style>{`
-        /* ── Sections ── */
-        .cg20-section {
-          position: relative;
-          z-index: 1;
-          width: 100%;
-          height: 100svh;
-          background-color: #1a1a1a;
-          color: #ffa600;
-          padding: 2rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden;
-        }
-
-        .cg20-section h1 {
-          font-size: clamp(2rem, 5vw, 8rem);
-          font-weight: 500;
-          letter-spacing: -0.02em;
-          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        }
-
-        /* ── Footer Revealer ── */
-        .footer-revealer-cg20 {
-          position: relative;
-          width: 100%;
-          height: 100svh;
-        }
-
-        /* ── Footer ── */
-        .footer-cg20 {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100svh;
-          background-color: #0f0f0f;
-          overflow: hidden;
-          z-index: 0;
-          font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        }
-
-        .footer-images-cg20 {
-          position: absolute;
-          inset: 0;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-
-        .footer-hand-img-cg20 {
-          position: relative;
-          width: 40%;
-          min-width: 200px;
-          will-change: transform;
-        }
-
-        .footer-hand-img-cg20 img {
-          display: block;
-          width: 100%;
-          opacity: 0;
-        }
-
-        .footer-hand-img-cg20 canvas {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-        }
-
-        .footer-content-cg20 {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          padding: 2rem;
-          display: flex;
-          justify-content: space-between;
-          gap: 2rem;
-          color: #fff;
-        }
-
-        .footer-links-cg20 {
-          display: flex;
-          flex-direction: column;
-          gap: 0.25rem;
-        }
-
-        .footer-links-cg20 a {
-          color: #fff;
-          text-decoration: none;
-          font-size: 1.1rem;
-        }
-
-        .footer-text-cg20 {
-          max-width: 28rem;
-        }
-
-        .footer-text-cg20 p {
-          font-size: 1.1rem;
-          line-height: 1.4;
-        }
-
-        .footer-header-cg20 {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          padding: 2rem;
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-end;
-          color: #fff;
-        }
-
-        .footer-header-cg20 h1 {
-          font-size: clamp(4rem, 15vw, 15rem);
-          font-weight: 500;
-          line-height: 1;
-          letter-spacing: -0.02em;
-          overflow: hidden;
-        }
-
-        @media (max-width: 1000px) {
-          .footer-content-cg20 {
-            flex-direction: column;
-          }
-
-          .footer-text-cg20 {
-            max-width: 100%;
-          }
-
-          .footer-header-cg20 h1 {
-            font-size: 3rem;
-          }
-        }
-      `}</style>
-
+    <div className="bg-[#1a1a1a] w-full">
       {/* Scrollable sections to demonstrate the reveal */}
-      <section className="cg20-section">
-        <h1>One</h1>
+      <section
+        className="relative z-[1] w-full h-[100svh] bg-[#1a1a1a] text-[#ffa600] p-8 flex justify-center items-center overflow-hidden"
+      >
+        <h1
+          className="font-medium tracking-tight"
+          style={{ fontSize: 'clamp(2rem, 5vw, 8rem)', letterSpacing: '-0.02em', fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" }}
+        >
+          One
+        </h1>
       </section>
-      <section className="cg20-section">Two</section>
-      <section className="cg20-section">Three</section>
+      <section
+        className="relative z-[1] w-full h-[100svh] bg-[#1a1a1a] text-[#ffa600] p-8 flex justify-center items-center overflow-hidden"
+        style={{ fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" }}
+      >
+        Two
+      </section>
+      <section
+        className="relative z-[1] w-full h-[100svh] bg-[#1a1a1a] text-[#ffa600] p-8 flex justify-center items-center overflow-hidden"
+        style={{ fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" }}
+      >
+        Three
+      </section>
 
       {/* Revealer trigger element */}
-      <div className="footer-revealer-cg20" ref={revealerRef} />
+      <div className="relative w-full h-[100svh]" ref={revealerRef} />
 
       {/* Fixed footer */}
-      <footer className="footer-cg20" ref={footerRef}>
-        <div className="footer-images-cg20">
-          <div className="footer-hand-img-cg20" ref={leftWrapperRef}>
+      <footer
+        className="fixed top-0 left-0 w-full h-[100svh] bg-[#0f0f0f] overflow-hidden z-0"
+        style={{ fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" }}
+        ref={footerRef}
+      >
+        <div className="absolute inset-0 flex justify-between items-center">
+          <div
+            className="relative w-[40%] will-change-transform"
+            style={{ minWidth: '200px' }}
+            ref={leftWrapperRef}
+          >
             <img
               src="/footer/left.png"
               alt="ASCII left hand"
-              className="ascii-hand"
+              className="ascii-hand block w-full opacity-0"
               ref={leftImgRef}
               crossOrigin="anonymous"
             />
-            <canvas ref={leftCanvasRef} />
+            <canvas className="absolute inset-0 w-full h-full" ref={leftCanvasRef} />
           </div>
-          <div className="footer-hand-img-cg20" ref={rightWrapperRef}>
+          <div
+            className="relative w-[40%] will-change-transform"
+            style={{ minWidth: '200px' }}
+            ref={rightWrapperRef}
+          >
             <img
               src="/footer/right.png"
               alt="ASCII right hand"
-              className="ascii-hand"
+              className="ascii-hand block w-full opacity-0"
               ref={rightImgRef}
               crossOrigin="anonymous"
             />
-            <canvas ref={rightCanvasRef} />
+            <canvas className="absolute inset-0 w-full h-full" ref={rightCanvasRef} />
           </div>
         </div>
 
-        <div className="footer-content-cg20">
-          <nav className="footer-links-cg20">
-            <a href="#">Work</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-            <a href="#">Journal</a>
+        <div className="footer-content-cg20 absolute top-0 left-0 w-full p-8 flex justify-between gap-8 text-white max-lg:flex-col">
+          <nav className="footer-links-cg20 flex flex-col gap-1">
+            <a href="#" className="text-white no-underline text-lg">Work</a>
+            <a href="#" className="text-white no-underline text-lg">About</a>
+            <a href="#" className="text-white no-underline text-lg">Contact</a>
+            <a href="#" className="text-white no-underline text-lg">Journal</a>
           </nav>
 
-          <div className="footer-text-cg20">
-            <p>
+          <div className="footer-text-cg20 max-w-md max-lg:max-w-full">
+            <p className="text-lg leading-relaxed">
               A multidisplinary studio working across direction, design and motion
               we build considered digital experience for brands that care
               about the details
@@ -621,9 +511,19 @@ const Footer1: React.FC = () => {
           </div>
         </div>
 
-        <div className="footer-header-cg20">
-          <h1>Blank</h1>
-          <h1>Canvas</h1>
+        <div className="footer-header-cg20 absolute bottom-0 left-0 w-full p-8 flex justify-between items-end text-white">
+          <h1
+            className="font-medium leading-none overflow-hidden"
+            style={{ fontSize: 'clamp(4rem, 15vw, 15rem)', letterSpacing: '-0.02em' }}
+          >
+            Blank
+          </h1>
+          <h1
+            className="font-medium leading-none overflow-hidden max-lg:text-5xl"
+            style={{ fontSize: 'clamp(4rem, 15vw, 15rem)', letterSpacing: '-0.02em' }}
+          >
+            Canvas
+          </h1>
         </div>
       </footer>
     </div>
