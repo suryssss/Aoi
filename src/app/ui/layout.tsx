@@ -20,6 +20,7 @@ export default function UILayout({
     { name: "Preloader", href: "/ui/preloader" },
     { name: "Buttons", href: "/ui/buttons" },
     { name: "CTA", href: "/ui/cta" },
+    { name: "Footer", href: "/ui/footer" },
   ];
 
   return (
